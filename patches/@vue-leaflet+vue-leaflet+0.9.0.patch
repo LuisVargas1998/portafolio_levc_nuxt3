@@ -1,0 +1,903 @@
+diff --git a/node_modules/@vue-leaflet/vue-leaflet/src/components/LCircle.vue b/node_modules/@vue-leaflet/vue-leaflet/src/components/LCircle.vue
+index e83c8d8..bb0b9ee 100644
+--- a/node_modules/@vue-leaflet/vue-leaflet/src/components/LCircle.vue
++++ b/node_modules/@vue-leaflet/vue-leaflet/src/components/LCircle.vue
+@@ -9,18 +9,18 @@ import {
+   ref,
+ } from "vue";
+ 
+-import { circleProps, setupCircle } from "@src/functions/circle";
+-import { render } from "@src/functions/layer";
++import { circleProps, setupCircle } from "../functions/circle";
++import { render } from "../functions/layer";
+ import {
+   AddLayerInjection,
+   UseGlobalLeafletInjection,
+-} from "@src/types/injectionKeys";
++} from "../types/injectionKeys";
+ import {
+   WINDOW_OR_GLOBAL,
+   assertInject,
+   propsBinder,
+   remapEvents,
+-} from "@src/utils.js";
++} from "../utils.js";
+ 
+ /**
+  * Circle component, lets you add and personalize circles on the map
+diff --git a/node_modules/@vue-leaflet/vue-leaflet/src/components/LCircleMarker.vue b/node_modules/@vue-leaflet/vue-leaflet/src/components/LCircleMarker.vue
+index 83d045f..d0e56b0 100644
+--- a/node_modules/@vue-leaflet/vue-leaflet/src/components/LCircleMarker.vue
++++ b/node_modules/@vue-leaflet/vue-leaflet/src/components/LCircleMarker.vue
+@@ -12,18 +12,18 @@ import {
+ import {
+   circleMarkerProps,
+   setupCircleMarker,
+-} from "@src/functions/circleMarker";
+-import { render } from "@src/functions/layer";
++} from "../functions/circleMarker";
++import { render } from "../functions/layer";
+ import {
+   AddLayerInjection,
+   UseGlobalLeafletInjection,
+-} from "@src/types/injectionKeys";
++} from "../types/injectionKeys";
+ import {
+   WINDOW_OR_GLOBAL,
+   assertInject,
+   propsBinder,
+   remapEvents,
+-} from "@src/utils.js";
++} from "../utils.js";
+ 
+ /**
+  * Circle Marker component, lets you add and personalize circle markers on the map
+diff --git a/node_modules/@vue-leaflet/vue-leaflet/src/components/LControl.vue b/node_modules/@vue-leaflet/vue-leaflet/src/components/LControl.vue
+index 4262108..840941a 100644
+--- a/node_modules/@vue-leaflet/vue-leaflet/src/components/LControl.vue
++++ b/node_modules/@vue-leaflet/vue-leaflet/src/components/LControl.vue
+@@ -13,12 +13,12 @@ import {
+   controlProps,
+   renderLControl,
+   setupControl,
+-} from "@src/functions/control";
++} from "../functions/control";
+ import {
+   RegisterControlInjection,
+   UseGlobalLeafletInjection,
+-} from "@src/types/injectionKeys";
+-import { WINDOW_OR_GLOBAL, assertInject, propsBinder } from "@src/utils.js";
++} from "../types/injectionKeys";
++import { WINDOW_OR_GLOBAL, assertInject, propsBinder } from "../utils.js";
+ 
+ export default defineComponent({
+   name: "LControl",
+diff --git a/node_modules/@vue-leaflet/vue-leaflet/src/components/LControlAttribution.vue b/node_modules/@vue-leaflet/vue-leaflet/src/components/LControlAttribution.vue
+index e5f30a3..096d443 100644
+--- a/node_modules/@vue-leaflet/vue-leaflet/src/components/LControlAttribution.vue
++++ b/node_modules/@vue-leaflet/vue-leaflet/src/components/LControlAttribution.vue
+@@ -12,12 +12,12 @@ import {
+ import {
+   controlAttributionProps,
+   setupControlAttribution,
+-} from "@src/functions/controlAttribution";
++} from "../functions/controlAttribution";
+ import {
+   RegisterControlInjection,
+   UseGlobalLeafletInjection,
+-} from "@src/types/injectionKeys";
+-import { WINDOW_OR_GLOBAL, assertInject, propsBinder } from "@src/utils.js";
++} from "../types/injectionKeys";
++import { WINDOW_OR_GLOBAL, assertInject, propsBinder } from "../utils.js";
+ 
+ export default defineComponent({
+   name: "LControlAttribution",
+diff --git a/node_modules/@vue-leaflet/vue-leaflet/src/components/LControlLayers.vue b/node_modules/@vue-leaflet/vue-leaflet/src/components/LControlLayers.vue
+index 448cbe3..b34abc2 100644
+--- a/node_modules/@vue-leaflet/vue-leaflet/src/components/LControlLayers.vue
++++ b/node_modules/@vue-leaflet/vue-leaflet/src/components/LControlLayers.vue
+@@ -12,12 +12,12 @@ import {
+ import {
+   controlLayersProps,
+   setupControlLayers,
+-} from "@src/functions/controlLayers";
++} from "../functions/controlLayers";
+ import {
+   RegisterLayerControlInjection,
+   UseGlobalLeafletInjection,
+-} from "@src/types/injectionKeys";
+-import { WINDOW_OR_GLOBAL, assertInject, propsBinder } from "@src/utils.js";
++} from "../types/injectionKeys";
++import { WINDOW_OR_GLOBAL, assertInject, propsBinder } from "../utils.js";
+ 
+ export default defineComponent({
+   name: "LControlLayers",
+diff --git a/node_modules/@vue-leaflet/vue-leaflet/src/components/LControlScale.vue b/node_modules/@vue-leaflet/vue-leaflet/src/components/LControlScale.vue
+index efb1552..8adba62 100644
+--- a/node_modules/@vue-leaflet/vue-leaflet/src/components/LControlScale.vue
++++ b/node_modules/@vue-leaflet/vue-leaflet/src/components/LControlScale.vue
+@@ -12,12 +12,12 @@ import {
+ import {
+   controlScaleProps,
+   setupControlScale,
+-} from "@src/functions/controlScale";
++} from "../functions/controlScale";
+ import {
+   RegisterControlInjection,
+   UseGlobalLeafletInjection,
+-} from "@src/types/injectionKeys";
+-import { WINDOW_OR_GLOBAL, assertInject, propsBinder } from "@src/utils.js";
++} from "../types/injectionKeys";
++import { WINDOW_OR_GLOBAL, assertInject, propsBinder } from "../utils.js";
+ 
+ export default defineComponent({
+   name: "LControlScale",
+diff --git a/node_modules/@vue-leaflet/vue-leaflet/src/components/LControlZoom.vue b/node_modules/@vue-leaflet/vue-leaflet/src/components/LControlZoom.vue
+index 078eaff..f7e9866 100644
+--- a/node_modules/@vue-leaflet/vue-leaflet/src/components/LControlZoom.vue
++++ b/node_modules/@vue-leaflet/vue-leaflet/src/components/LControlZoom.vue
+@@ -9,12 +9,12 @@ import {
+   ref,
+ } from "vue";
+ 
+-import { controlZoomProps, setupControlZoom } from "@src/functions/controlZoom";
++import { controlZoomProps, setupControlZoom } from "../functions/controlZoom";
+ import {
+   RegisterControlInjection,
+   UseGlobalLeafletInjection,
+-} from "@src/types/injectionKeys";
+-import { WINDOW_OR_GLOBAL, assertInject, propsBinder } from "@src/utils.js";
++} from "../types/injectionKeys";
++import { WINDOW_OR_GLOBAL, assertInject, propsBinder } from "../utils.js";
+ 
+ export default defineComponent({
+   name: "LControlZoom",
+diff --git a/node_modules/@vue-leaflet/vue-leaflet/src/components/LFeatureGroup.vue b/node_modules/@vue-leaflet/vue-leaflet/src/components/LFeatureGroup.vue
+index b415667..7d7b91d 100644
+--- a/node_modules/@vue-leaflet/vue-leaflet/src/components/LFeatureGroup.vue
++++ b/node_modules/@vue-leaflet/vue-leaflet/src/components/LFeatureGroup.vue
+@@ -12,18 +12,18 @@ import {
+ import {
+   featureGroupProps,
+   setupFeatureGroup,
+-} from "@src/functions/featureGroup";
+-import { render } from "@src/functions/layer";
++} from "../functions/featureGroup";
++import { render } from "../functions/layer";
+ import {
+   AddLayerInjection,
+   UseGlobalLeafletInjection,
+-} from "@src/types/injectionKeys";
++} from "../types/injectionKeys";
+ import {
+   WINDOW_OR_GLOBAL,
+   assertInject,
+   propsBinder,
+   remapEvents,
+-} from "@src/utils.js";
++} from "../utils.js";
+ 
+ export default defineComponent({
+   props: featureGroupProps,
+diff --git a/node_modules/@vue-leaflet/vue-leaflet/src/components/LGeoJson.vue b/node_modules/@vue-leaflet/vue-leaflet/src/components/LGeoJson.vue
+index feb7e0d..e67865a 100644
+--- a/node_modules/@vue-leaflet/vue-leaflet/src/components/LGeoJson.vue
++++ b/node_modules/@vue-leaflet/vue-leaflet/src/components/LGeoJson.vue
+@@ -9,18 +9,18 @@ import {
+   ref,
+ } from "vue";
+ 
+-import { geoJSONProps, setupGeoJSON } from "@src/functions/geoJSON";
+-import { render } from "@src/functions/layer";
++import { geoJSONProps, setupGeoJSON } from "../functions/geoJSON";
++import { render } from "../functions/layer";
+ import {
+   AddLayerInjection,
+   UseGlobalLeafletInjection,
+-} from "@src/types/injectionKeys";
++} from "../types/injectionKeys";
+ import {
+   WINDOW_OR_GLOBAL,
+   assertInject,
+   propsBinder,
+   remapEvents,
+-} from "@src/utils.js";
++} from "../utils.js";
+ 
+ export default defineComponent({
+   props: geoJSONProps,
+diff --git a/node_modules/@vue-leaflet/vue-leaflet/src/components/LGridLayer.vue b/node_modules/@vue-leaflet/vue-leaflet/src/components/LGridLayer.vue
+index 3533f76..a9db26d 100644
+--- a/node_modules/@vue-leaflet/vue-leaflet/src/components/LGridLayer.vue
++++ b/node_modules/@vue-leaflet/vue-leaflet/src/components/LGridLayer.vue
+@@ -16,17 +16,17 @@ import {
+   type VueGridLayerTileRenderer,
+   gridLayerProps,
+   setupGridLayer,
+-} from "@src/functions/gridLayer";
++} from "../functions/gridLayer";
+ import {
+   AddLayerInjection,
+   UseGlobalLeafletInjection,
+-} from "@src/types/injectionKeys";
++} from "../types/injectionKeys";
+ import {
+   WINDOW_OR_GLOBAL,
+   assertInject,
+   propsBinder,
+   remapEvents,
+-} from "@src/utils.js";
++} from "../utils.js";
+ 
+ export default defineComponent({
+   props: {
+diff --git a/node_modules/@vue-leaflet/vue-leaflet/src/components/LIcon.vue b/node_modules/@vue-leaflet/vue-leaflet/src/components/LIcon.vue
+index fa8add0..7792f95 100644
+--- a/node_modules/@vue-leaflet/vue-leaflet/src/components/LIcon.vue
++++ b/node_modules/@vue-leaflet/vue-leaflet/src/components/LIcon.vue
+@@ -2,21 +2,21 @@
+ import type L from "leaflet";
+ import { defineComponent, h, inject, nextTick, onMounted, ref } from "vue";
+ 
+-import { componentProps, setupComponent } from "@src/functions/component";
+-import { iconProps } from "@src/functions/icon";
++import { componentProps, setupComponent } from "../functions/component";
++import { iconProps } from "../functions/icon";
+ import {
+   CanSetParentHtmlInjection,
+   SetIconInjection,
+   SetParentHtmlInjection,
+   UseGlobalLeafletInjection,
+-} from "@src/types/injectionKeys";
++} from "../types/injectionKeys";
+ import {
+   WINDOW_OR_GLOBAL,
+   assertInject,
+   propsBinder,
+   propsToLeafletOptions,
+   remapEvents,
+-} from "@src/utils";
++} from "../utils";
+ 
+ /**
+  * Icon component, lets you add and custom icons to the map
+diff --git a/node_modules/@vue-leaflet/vue-leaflet/src/components/LImageOverlay.vue b/node_modules/@vue-leaflet/vue-leaflet/src/components/LImageOverlay.vue
+index 153056a..f7d1c10 100644
+--- a/node_modules/@vue-leaflet/vue-leaflet/src/components/LImageOverlay.vue
++++ b/node_modules/@vue-leaflet/vue-leaflet/src/components/LImageOverlay.vue
+@@ -12,18 +12,18 @@ import {
+ import {
+   imageOverlayProps,
+   setupImageOverlay,
+-} from "@src/functions/imageOverlay";
+-import { render } from "@src/functions/layer";
++} from "../functions/imageOverlay";
++import { render } from "../functions/layer";
+ import {
+   AddLayerInjection,
+   UseGlobalLeafletInjection,
+-} from "@src/types/injectionKeys";
++} from "../types/injectionKeys";
+ import {
+   WINDOW_OR_GLOBAL,
+   assertInject,
+   propsBinder,
+   remapEvents,
+-} from "@src/utils.js";
++} from "../utils.js";
+ 
+ /**
+  * ImageOverlay component, render a plain image instead of a geospatial map.
+diff --git a/node_modules/@vue-leaflet/vue-leaflet/src/components/LLayerGroup.vue b/node_modules/@vue-leaflet/vue-leaflet/src/components/LLayerGroup.vue
+index dbdce06..b4b7d1c 100644
+--- a/node_modules/@vue-leaflet/vue-leaflet/src/components/LLayerGroup.vue
++++ b/node_modules/@vue-leaflet/vue-leaflet/src/components/LLayerGroup.vue
+@@ -9,18 +9,18 @@ import {
+   ref,
+ } from "vue";
+ 
+-import { render } from "@src/functions/layer";
+-import { layerGroupProps, setupLayerGroup } from "@src/functions/layerGroup";
++import { render } from "../functions/layer";
++import { layerGroupProps, setupLayerGroup } from "../functions/layerGroup";
+ import {
+   AddLayerInjection,
+   UseGlobalLeafletInjection,
+-} from "@src/types/injectionKeys";
++} from "../types/injectionKeys";
+ import {
+   WINDOW_OR_GLOBAL,
+   assertInject,
+   propsBinder,
+   remapEvents,
+-} from "@src/utils.js";
++} from "../utils.js";
+ 
+ export default defineComponent({
+   props: layerGroupProps,
+diff --git a/node_modules/@vue-leaflet/vue-leaflet/src/components/LMap.vue b/node_modules/@vue-leaflet/vue-leaflet/src/components/LMap.vue
+index 3951acc..10197bc 100644
+--- a/node_modules/@vue-leaflet/vue-leaflet/src/components/LMap.vue
++++ b/node_modules/@vue-leaflet/vue-leaflet/src/components/LMap.vue
+@@ -15,20 +15,20 @@ import {
+   ref,
+ } from "vue";
+ 
+-import { componentProps, setupComponent } from "@src/functions/component";
++import { componentProps, setupComponent } from "../functions/component";
+ import {
+   AddLayerInjection,
+   RegisterControlInjection,
+   RegisterLayerControlInjection,
+   RemoveLayerInjection,
+   UseGlobalLeafletInjection,
+-} from "@src/types/injectionKeys";
++} from "../types/injectionKeys";
+ import type {
+   IControlDefinition,
+   ILayerDefinition,
+   IMapBlueprint,
+   IMapOptions,
+-} from "@src/types/interfaces";
++} from "../types/interfaces";
+ import {
+   WINDOW_OR_GLOBAL,
+   bindEventHandlers,
+@@ -39,7 +39,7 @@ import {
+   remapEvents,
+   resetWebpackIcon,
+   updateLeafletWrapper,
+-} from "@src/utils.js";
++} from "../utils.js";
+ 
+ const mapProps = {
+   ...componentProps,
+@@ -159,6 +159,7 @@ export default defineComponent({
+   emits: ["ready", "update:zoom", "update:center", "update:bounds"],
+   props: mapProps,
+   setup(props, context) {
++
+     const root = ref<HTMLElement>();
+     const blueprint = reactive<IMapBlueprint>({
+       ready: false,
+diff --git a/node_modules/@vue-leaflet/vue-leaflet/src/components/LMarker.vue b/node_modules/@vue-leaflet/vue-leaflet/src/components/LMarker.vue
+index 95f75cf..137f0a5 100644
+--- a/node_modules/@vue-leaflet/vue-leaflet/src/components/LMarker.vue
++++ b/node_modules/@vue-leaflet/vue-leaflet/src/components/LMarker.vue
+@@ -12,19 +12,19 @@ import {
+   ref,
+ } from "vue";
+ 
+-import { render } from "@src/functions/layer";
++import { render } from "../functions/layer";
+ import {
+   markerProps,
+   setupMarker,
+   shouldBlankIcon,
+-} from "@src/functions/marker";
++} from "../functions/marker";
+ import {
+   AddLayerInjection,
+   CanSetParentHtmlInjection,
+   SetIconInjection,
+   SetParentHtmlInjection,
+   UseGlobalLeafletInjection,
+-} from "@src/types/injectionKeys";
++} from "../types/injectionKeys";
+ import {
+   WINDOW_OR_GLOBAL,
+   assertInject,
+@@ -32,7 +32,7 @@ import {
+   isFunction,
+   propsBinder,
+   remapEvents,
+-} from "@src/utils.js";
++} from "../utils.js";
+ 
+ /**
+  * Marker component, lets you add and personalize markers on the map
+@@ -41,6 +41,7 @@ export default defineComponent({
+   name: "LMarker",
+   props: markerProps,
+   setup(props, context) {
++
+     const leafletObject = ref<L.Marker>();
+     const ready = ref(false);
+ 
+diff --git a/node_modules/@vue-leaflet/vue-leaflet/src/components/LPolygon.vue b/node_modules/@vue-leaflet/vue-leaflet/src/components/LPolygon.vue
+index 63f6860..7a6395a 100644
+--- a/node_modules/@vue-leaflet/vue-leaflet/src/components/LPolygon.vue
++++ b/node_modules/@vue-leaflet/vue-leaflet/src/components/LPolygon.vue
+@@ -9,18 +9,18 @@ import {
+   ref,
+ } from "vue";
+ 
+-import { render } from "@src/functions/layer";
+-import { polygonProps, setupPolygon } from "@src/functions/polygon";
++import { render } from "../functions/layer";
++import { polygonProps, setupPolygon } from "../functions/polygon";
+ import {
+   AddLayerInjection,
+   UseGlobalLeafletInjection,
+-} from "@src/types/injectionKeys";
++} from "../types/injectionKeys";
+ import {
+   WINDOW_OR_GLOBAL,
+   assertInject,
+   propsBinder,
+   remapEvents,
+-} from "@src/utils.js";
++} from "../utils.js";
+ 
+ /**
+  * Polygon component, lets you add and customize polygon regions on the map
+diff --git a/node_modules/@vue-leaflet/vue-leaflet/src/components/LPolyline.vue b/node_modules/@vue-leaflet/vue-leaflet/src/components/LPolyline.vue
+index a9f4b72..b8c84f4 100644
+--- a/node_modules/@vue-leaflet/vue-leaflet/src/components/LPolyline.vue
++++ b/node_modules/@vue-leaflet/vue-leaflet/src/components/LPolyline.vue
+@@ -9,18 +9,18 @@ import {
+   ref,
+ } from "vue";
+ 
+-import { render } from "@src/functions/layer";
+-import { polylineProps, setupPolyline } from "@src/functions/polyline";
++import { render } from "../functions/layer";
++import { polylineProps, setupPolyline } from "../functions/polyline";
+ import {
+   AddLayerInjection,
+   UseGlobalLeafletInjection,
+-} from "@src/types/injectionKeys";
++} from "../types/injectionKeys";
+ import {
+   WINDOW_OR_GLOBAL,
+   assertInject,
+   propsBinder,
+   remapEvents,
+-} from "@src/utils.js";
++} from "../utils.js";
+ 
+ /**
+  * Polyline component, lets you add and personalize polylines on the map
+diff --git a/node_modules/@vue-leaflet/vue-leaflet/src/components/LPopup.vue b/node_modules/@vue-leaflet/vue-leaflet/src/components/LPopup.vue
+index e657034..4945a4e 100644
+--- a/node_modules/@vue-leaflet/vue-leaflet/src/components/LPopup.vue
++++ b/node_modules/@vue-leaflet/vue-leaflet/src/components/LPopup.vue
+@@ -10,19 +10,19 @@ import {
+   ref,
+ } from "vue";
+ 
+-import { render } from "@src/functions/popper";
+-import { popupProps, setupPopup } from "@src/functions/popup";
++import { render } from "../functions/popper";
++import { popupProps, setupPopup } from "../functions/popup";
+ import {
+   BindPopupInjection,
+   UnbindPopupInjection,
+   UseGlobalLeafletInjection,
+-} from "@src/types/injectionKeys";
++} from "../types/injectionKeys";
+ import {
+   WINDOW_OR_GLOBAL,
+   assertInject,
+   propsBinder,
+   remapEvents,
+-} from "@src/utils.js";
++} from "../utils.js";
+ 
+ /**
+  * Display a popup on the map
+diff --git a/node_modules/@vue-leaflet/vue-leaflet/src/components/LRectangle.vue b/node_modules/@vue-leaflet/vue-leaflet/src/components/LRectangle.vue
+index 5a522d8..251144f 100644
+--- a/node_modules/@vue-leaflet/vue-leaflet/src/components/LRectangle.vue
++++ b/node_modules/@vue-leaflet/vue-leaflet/src/components/LRectangle.vue
+@@ -9,18 +9,18 @@ import {
+   ref,
+ } from "vue";
+ 
+-import { render } from "@src/functions/layer";
+-import { rectangleProps, setupRectangle } from "@src/functions/rectangle";
++import { render } from "../functions/layer";
++import { rectangleProps, setupRectangle } from "../functions/rectangle";
+ import {
+   AddLayerInjection,
+   UseGlobalLeafletInjection,
+-} from "@src/types/injectionKeys";
++} from "../types/injectionKeys";
+ import {
+   WINDOW_OR_GLOBAL,
+   assertInject,
+   propsBinder,
+   remapEvents,
+-} from "@src/utils.js";
++} from "../utils.js";
+ 
+ /**
+  * Rectangle component, lets you add and customize rectangular regions on the map
+diff --git a/node_modules/@vue-leaflet/vue-leaflet/src/components/LTileLayer.vue b/node_modules/@vue-leaflet/vue-leaflet/src/components/LTileLayer.vue
+index 41ac39f..1ad315d 100644
+--- a/node_modules/@vue-leaflet/vue-leaflet/src/components/LTileLayer.vue
++++ b/node_modules/@vue-leaflet/vue-leaflet/src/components/LTileLayer.vue
+@@ -9,17 +9,17 @@ import {
+   ref,
+ } from "vue";
+ 
+-import { setupTileLayer, tileLayerProps } from "@src/functions/tileLayer";
++import { setupTileLayer, tileLayerProps } from "../functions/tileLayer";
+ import {
+   AddLayerInjection,
+   UseGlobalLeafletInjection,
+-} from "@src/types/injectionKeys";
++} from "../types/injectionKeys";
+ import {
+   WINDOW_OR_GLOBAL,
+   assertInject,
+   propsBinder,
+   remapEvents,
+-} from "@src/utils.js";
++} from "../utils.js";
+ 
+ export default defineComponent({
+   props: tileLayerProps,
+diff --git a/node_modules/@vue-leaflet/vue-leaflet/src/components/LTooltip.vue b/node_modules/@vue-leaflet/vue-leaflet/src/components/LTooltip.vue
+index 812d3b7..c9b8123 100644
+--- a/node_modules/@vue-leaflet/vue-leaflet/src/components/LTooltip.vue
++++ b/node_modules/@vue-leaflet/vue-leaflet/src/components/LTooltip.vue
+@@ -9,18 +9,18 @@ import {
+   ref,
+ } from "vue";
+ 
+-import { render } from "@src/functions/popper";
+-import { setupTooltip, tooltipProps } from "@src/functions/tooltip";
++import { render } from "../functions/popper";
++import { setupTooltip, tooltipProps } from "../functions/tooltip";
+ import {
+   BindTooltipInjection,
+   UseGlobalLeafletInjection,
+-} from "@src/types/injectionKeys";
++} from "../types/injectionKeys";
+ import {
+   WINDOW_OR_GLOBAL,
+   assertInject,
+   propsBinder,
+   remapEvents,
+-} from "@src/utils.js";
++} from "../utils.js";
+ 
+ /**
+  * Display a tooltip on the map
+diff --git a/node_modules/@vue-leaflet/vue-leaflet/src/components/LWmsTileLayer.vue b/node_modules/@vue-leaflet/vue-leaflet/src/components/LWmsTileLayer.vue
+index e95e7a0..c620ef0 100644
+--- a/node_modules/@vue-leaflet/vue-leaflet/src/components/LWmsTileLayer.vue
++++ b/node_modules/@vue-leaflet/vue-leaflet/src/components/LWmsTileLayer.vue
+@@ -12,17 +12,17 @@ import {
+ import {
+   setupWMSTileLayer,
+   wmsTileLayerProps,
+-} from "@src/functions/wmsTileLayer";
++} from "../functions/wmsTileLayer";
+ import {
+   AddLayerInjection,
+   UseGlobalLeafletInjection,
+-} from "@src/types/injectionKeys";
++} from "../types/injectionKeys";
+ import {
+   WINDOW_OR_GLOBAL,
+   assertInject,
+   propsBinder,
+   remapEvents,
+-} from "@src/utils.js";
++} from "../utils.js";
+ 
+ export default defineComponent({
+   props: wmsTileLayerProps,
+diff --git a/node_modules/@vue-leaflet/vue-leaflet/src/functions/circle.ts b/node_modules/@vue-leaflet/vue-leaflet/src/functions/circle.ts
+index bd066c2..53a2ca8 100644
+--- a/node_modules/@vue-leaflet/vue-leaflet/src/functions/circle.ts
++++ b/node_modules/@vue-leaflet/vue-leaflet/src/functions/circle.ts
+@@ -1,6 +1,6 @@
+ import type L from "leaflet";
+ 
+-import { propsToLeafletOptions } from "@src/utils";
++import { propsToLeafletOptions } from "../utils";
+ 
+ import { circleMarkerProps, setupCircleMarker } from "./circleMarker";
+ 
+diff --git a/node_modules/@vue-leaflet/vue-leaflet/src/functions/circleMarker.ts b/node_modules/@vue-leaflet/vue-leaflet/src/functions/circleMarker.ts
+index 2ec2226..fcd7fd3 100644
+--- a/node_modules/@vue-leaflet/vue-leaflet/src/functions/circleMarker.ts
++++ b/node_modules/@vue-leaflet/vue-leaflet/src/functions/circleMarker.ts
+@@ -1,7 +1,7 @@
+ import type L from "leaflet";
+ import type { PropType } from "vue";
+ 
+-import { propsToLeafletOptions } from "@src/utils";
++import { propsToLeafletOptions } from "../utils";
+ 
+ import { pathProps, setupPath as pathSetup } from "./path";
+ 
+diff --git a/node_modules/@vue-leaflet/vue-leaflet/src/functions/control.ts b/node_modules/@vue-leaflet/vue-leaflet/src/functions/control.ts
+index 13e3044..55bbcce 100644
+--- a/node_modules/@vue-leaflet/vue-leaflet/src/functions/control.ts
++++ b/node_modules/@vue-leaflet/vue-leaflet/src/functions/control.ts
+@@ -1,7 +1,7 @@
+ import type L from "leaflet";
+ import { type PropType, h, onUnmounted } from "vue";
+ 
+-import { propsToLeafletOptions } from "@src/utils";
++import { propsToLeafletOptions } from "../utils";
+ 
+ import { componentProps, setupComponent } from "./component";
+ 
+diff --git a/node_modules/@vue-leaflet/vue-leaflet/src/functions/controlAttribution.ts b/node_modules/@vue-leaflet/vue-leaflet/src/functions/controlAttribution.ts
+index a49ac3f..4bafbf7 100644
+--- a/node_modules/@vue-leaflet/vue-leaflet/src/functions/controlAttribution.ts
++++ b/node_modules/@vue-leaflet/vue-leaflet/src/functions/controlAttribution.ts
+@@ -1,6 +1,6 @@
+ import type L from "leaflet";
+ 
+-import { propsToLeafletOptions } from "@src/utils";
++import { propsToLeafletOptions } from "../utils";
+ 
+ import { controlProps, setupControl } from "./control";
+ 
+diff --git a/node_modules/@vue-leaflet/vue-leaflet/src/functions/controlLayers.ts b/node_modules/@vue-leaflet/vue-leaflet/src/functions/controlLayers.ts
+index 4de52a7..303f362 100644
+--- a/node_modules/@vue-leaflet/vue-leaflet/src/functions/controlLayers.ts
++++ b/node_modules/@vue-leaflet/vue-leaflet/src/functions/controlLayers.ts
+@@ -1,6 +1,6 @@
+ import type L from "leaflet";
+ 
+-import { propsToLeafletOptions } from "@src/utils";
++import { propsToLeafletOptions } from "../utils";
+ 
+ import { controlProps, setupControl } from "./control";
+ 
+diff --git a/node_modules/@vue-leaflet/vue-leaflet/src/functions/controlScale.ts b/node_modules/@vue-leaflet/vue-leaflet/src/functions/controlScale.ts
+index 09ddf5a..52294b2 100644
+--- a/node_modules/@vue-leaflet/vue-leaflet/src/functions/controlScale.ts
++++ b/node_modules/@vue-leaflet/vue-leaflet/src/functions/controlScale.ts
+@@ -1,6 +1,6 @@
+ import type L from "leaflet";
+ 
+-import { propsToLeafletOptions } from "@src/utils";
++import { propsToLeafletOptions } from "../utils";
+ 
+ import { controlProps, setupControl } from "./control";
+ 
+diff --git a/node_modules/@vue-leaflet/vue-leaflet/src/functions/controlZoom.ts b/node_modules/@vue-leaflet/vue-leaflet/src/functions/controlZoom.ts
+index 785441b..1733cc4 100644
+--- a/node_modules/@vue-leaflet/vue-leaflet/src/functions/controlZoom.ts
++++ b/node_modules/@vue-leaflet/vue-leaflet/src/functions/controlZoom.ts
+@@ -1,6 +1,6 @@
+ import type L from "leaflet";
+ 
+-import { propsToLeafletOptions } from "@src/utils";
++import { propsToLeafletOptions } from "../utils";
+ 
+ import { controlProps, setupControl } from "./control";
+ 
+diff --git a/node_modules/@vue-leaflet/vue-leaflet/src/functions/featureGroup.ts b/node_modules/@vue-leaflet/vue-leaflet/src/functions/featureGroup.ts
+index d2a32df..2372dc5 100644
+--- a/node_modules/@vue-leaflet/vue-leaflet/src/functions/featureGroup.ts
++++ b/node_modules/@vue-leaflet/vue-leaflet/src/functions/featureGroup.ts
+@@ -1,6 +1,6 @@
+ import type L from "leaflet";
+ 
+-import { propsToLeafletOptions } from "@src/utils";
++import { propsToLeafletOptions } from "../utils";
+ 
+ import { layerGroupProps, setupLayerGroup } from "./layerGroup";
+ 
+diff --git a/node_modules/@vue-leaflet/vue-leaflet/src/functions/geoJSON.ts b/node_modules/@vue-leaflet/vue-leaflet/src/functions/geoJSON.ts
+index 2679f27..3f9f44a 100644
+--- a/node_modules/@vue-leaflet/vue-leaflet/src/functions/geoJSON.ts
++++ b/node_modules/@vue-leaflet/vue-leaflet/src/functions/geoJSON.ts
+@@ -2,7 +2,7 @@ import type { GeoJsonObject } from "geojson";
+ import type L from "leaflet";
+ import type { PropType } from "vue";
+ 
+-import { propsToLeafletOptions } from "@src/utils";
++import { propsToLeafletOptions } from "../utils";
+ 
+ import { layerGroupProps, setupLayerGroup } from "./layerGroup";
+ 
+diff --git a/node_modules/@vue-leaflet/vue-leaflet/src/functions/gridLayer.ts b/node_modules/@vue-leaflet/vue-leaflet/src/functions/gridLayer.ts
+index 9638997..238dea2 100644
+--- a/node_modules/@vue-leaflet/vue-leaflet/src/functions/gridLayer.ts
++++ b/node_modules/@vue-leaflet/vue-leaflet/src/functions/gridLayer.ts
+@@ -2,7 +2,7 @@ import type L from "leaflet";
+ import { type PropType, onUnmounted } from "vue";
+ import { type VNode, h, render } from "vue";
+ 
+-import { propsToLeafletOptions } from "@src/utils";
++import { propsToLeafletOptions } from "../utils";
+ 
+ import { layerProps, setupLayer } from "./layer";
+ 
+diff --git a/node_modules/@vue-leaflet/vue-leaflet/src/functions/imageOverlay.ts b/node_modules/@vue-leaflet/vue-leaflet/src/functions/imageOverlay.ts
+index e6df5bc..99fd313 100644
+--- a/node_modules/@vue-leaflet/vue-leaflet/src/functions/imageOverlay.ts
++++ b/node_modules/@vue-leaflet/vue-leaflet/src/functions/imageOverlay.ts
+@@ -1,7 +1,7 @@
+ import type L from "leaflet";
+ import type { PropType } from "vue";
+ 
+-import { propsToLeafletOptions } from "@src/utils";
++import { propsToLeafletOptions } from "../utils";
+ 
+ import { layerProps, setupLayer } from "./layer";
+ 
+diff --git a/node_modules/@vue-leaflet/vue-leaflet/src/functions/interactiveLayer.ts b/node_modules/@vue-leaflet/vue-leaflet/src/functions/interactiveLayer.ts
+index 5a1c492..1f6f426 100644
+--- a/node_modules/@vue-leaflet/vue-leaflet/src/functions/interactiveLayer.ts
++++ b/node_modules/@vue-leaflet/vue-leaflet/src/functions/interactiveLayer.ts
+@@ -1,6 +1,6 @@
+ import type L from "leaflet";
+ 
+-import { propsToLeafletOptions } from "@src/utils";
++import { propsToLeafletOptions } from "../utils";
+ 
+ import { layerProps, setupLayer } from "./layer";
+ 
+diff --git a/node_modules/@vue-leaflet/vue-leaflet/src/functions/layer.ts b/node_modules/@vue-leaflet/vue-leaflet/src/functions/layer.ts
+index 5c01edd..29c9fc0 100644
+--- a/node_modules/@vue-leaflet/vue-leaflet/src/functions/layer.ts
++++ b/node_modules/@vue-leaflet/vue-leaflet/src/functions/layer.ts
+@@ -8,8 +8,8 @@ import {
+   RemoveLayerInjection,
+   UnbindPopupInjection,
+   UnbindTooltipInjection,
+-} from "@src/types/injectionKeys";
+-import { assertInject, isFunction, propsToLeafletOptions } from "@src/utils";
++} from "../types/injectionKeys";
++import { assertInject, isFunction, propsToLeafletOptions } from "../utils";
+ 
+ import type { LayerType } from "../types/enums/LayerType";
+ import { componentProps, setupComponent } from "./component";
+diff --git a/node_modules/@vue-leaflet/vue-leaflet/src/functions/layerGroup.ts b/node_modules/@vue-leaflet/vue-leaflet/src/functions/layerGroup.ts
+index 6e3eab1..0e2a46a 100644
+--- a/node_modules/@vue-leaflet/vue-leaflet/src/functions/layerGroup.ts
++++ b/node_modules/@vue-leaflet/vue-leaflet/src/functions/layerGroup.ts
+@@ -4,8 +4,8 @@ import { provide } from "vue";
+ import {
+   AddLayerInjection,
+   RemoveLayerInjection,
+-} from "@src/types/injectionKeys";
+-import { propsToLeafletOptions } from "@src/utils";
++} from "../types/injectionKeys";
++import { propsToLeafletOptions } from "../utils";
+ 
+ import { layerProps, setupLayer } from "./layer";
+ 
+diff --git a/node_modules/@vue-leaflet/vue-leaflet/src/functions/marker.ts b/node_modules/@vue-leaflet/vue-leaflet/src/functions/marker.ts
+index 22b8eb0..5f94fc4 100644
+--- a/node_modules/@vue-leaflet/vue-leaflet/src/functions/marker.ts
++++ b/node_modules/@vue-leaflet/vue-leaflet/src/functions/marker.ts
+@@ -1,7 +1,7 @@
+ import type L from "leaflet";
+ import type { PropType } from "vue";
+ 
+-import { propsToLeafletOptions } from "@src/utils";
++import { propsToLeafletOptions } from "../utils";
+ 
+ import { layerProps, setupLayer } from "./layer";
+ 
+diff --git a/node_modules/@vue-leaflet/vue-leaflet/src/functions/path.ts b/node_modules/@vue-leaflet/vue-leaflet/src/functions/path.ts
+index f31890b..02b4a3c 100644
+--- a/node_modules/@vue-leaflet/vue-leaflet/src/functions/path.ts
++++ b/node_modules/@vue-leaflet/vue-leaflet/src/functions/path.ts
+@@ -1,8 +1,8 @@
+ import type L from "leaflet";
+ import { onBeforeUnmount } from "vue";
+ 
+-import { RemoveLayerInjection } from "@src/types/injectionKeys";
+-import { assertInject, propsToLeafletOptions } from "@src/utils";
++import { RemoveLayerInjection } from "../types/injectionKeys";
++import { assertInject, propsToLeafletOptions } from "../utils";
+ 
+ import {
+   interactiveLayerProps,
+diff --git a/node_modules/@vue-leaflet/vue-leaflet/src/functions/polygon.ts b/node_modules/@vue-leaflet/vue-leaflet/src/functions/polygon.ts
+index a11d0ac..628e2c2 100644
+--- a/node_modules/@vue-leaflet/vue-leaflet/src/functions/polygon.ts
++++ b/node_modules/@vue-leaflet/vue-leaflet/src/functions/polygon.ts
+@@ -1,6 +1,6 @@
+ import type L from "leaflet";
+ 
+-import { propsToLeafletOptions } from "@src/utils";
++import { propsToLeafletOptions } from "../utils";
+ 
+ import { polylineProps, setupPolyline } from "./polyline";
+ 
+diff --git a/node_modules/@vue-leaflet/vue-leaflet/src/functions/polyline.ts b/node_modules/@vue-leaflet/vue-leaflet/src/functions/polyline.ts
+index e77325e..c842fb8 100644
+--- a/node_modules/@vue-leaflet/vue-leaflet/src/functions/polyline.ts
++++ b/node_modules/@vue-leaflet/vue-leaflet/src/functions/polyline.ts
+@@ -1,7 +1,7 @@
+ import type L from "leaflet";
+ import type { PropType } from "vue";
+ 
+-import { propsToLeafletOptions } from "@src/utils";
++import { propsToLeafletOptions } from "../utils";
+ 
+ import { pathProps, setupPath } from "./path";
+ 
+diff --git a/node_modules/@vue-leaflet/vue-leaflet/src/functions/rectangle.ts b/node_modules/@vue-leaflet/vue-leaflet/src/functions/rectangle.ts
+index 8b0041f..930f5f5 100644
+--- a/node_modules/@vue-leaflet/vue-leaflet/src/functions/rectangle.ts
++++ b/node_modules/@vue-leaflet/vue-leaflet/src/functions/rectangle.ts
+@@ -1,7 +1,7 @@
+ import type L from "leaflet";
+ import type { PropType } from "vue";
+ 
+-import { propsToLeafletOptions } from "@src/utils";
++import { propsToLeafletOptions } from "../utils";
+ 
+ import { polygonProps, setupPolygon } from "./polygon";
+ 
+diff --git a/node_modules/@vue-leaflet/vue-leaflet/src/functions/tileLayer.ts b/node_modules/@vue-leaflet/vue-leaflet/src/functions/tileLayer.ts
+index 7a47892..de7b0cc 100644
+--- a/node_modules/@vue-leaflet/vue-leaflet/src/functions/tileLayer.ts
++++ b/node_modules/@vue-leaflet/vue-leaflet/src/functions/tileLayer.ts
+@@ -1,7 +1,7 @@
+ import type L from "leaflet";
+ import type { PropType } from "vue";
+ 
+-import { propsToLeafletOptions } from "@src/utils";
++import { propsToLeafletOptions } from "../utils";
+ 
+ import { gridLayerProps, setupGridLayer } from "./gridLayer";
+ 
+diff --git a/node_modules/@vue-leaflet/vue-leaflet/src/functions/tooltip.ts b/node_modules/@vue-leaflet/vue-leaflet/src/functions/tooltip.ts
+index 136f667..4100cdc 100644
+--- a/node_modules/@vue-leaflet/vue-leaflet/src/functions/tooltip.ts
++++ b/node_modules/@vue-leaflet/vue-leaflet/src/functions/tooltip.ts
+@@ -1,7 +1,7 @@
+ import { onBeforeUnmount } from "vue";
+ 
+-import { UnbindTooltipInjection } from "@src/types/injectionKeys";
+-import { assertInject } from "@src/utils";
++import { UnbindTooltipInjection } from "../types/injectionKeys";
++import { assertInject } from "../utils";
+ 
+ import { popperProps, setupPopper } from "./popper";
+ 
+diff --git a/node_modules/@vue-leaflet/vue-leaflet/src/functions/wmsTileLayer.ts b/node_modules/@vue-leaflet/vue-leaflet/src/functions/wmsTileLayer.ts
+index 2fdadd7..bd2d0c1 100644
+--- a/node_modules/@vue-leaflet/vue-leaflet/src/functions/wmsTileLayer.ts
++++ b/node_modules/@vue-leaflet/vue-leaflet/src/functions/wmsTileLayer.ts
+@@ -1,6 +1,6 @@
+ import type L from "leaflet";
+ 
+-import { propsToLeafletOptions } from "@src/utils";
++import { propsToLeafletOptions } from "../utils";
+ 
+ import { setupTileLayer, tileLayerProps } from "./tileLayer";
+ 
+diff --git a/node_modules/@vue-leaflet/vue-leaflet/src/utils.ts b/node_modules/@vue-leaflet/vue-leaflet/src/utils.ts
+index 993203b..55dea55 100644
+--- a/node_modules/@vue-leaflet/vue-leaflet/src/utils.ts
++++ b/node_modules/@vue-leaflet/vue-leaflet/src/utils.ts
+@@ -1,5 +1,6 @@
+ import type L from "leaflet";
+ import { type InjectionKey, inject, provide, ref, watch } from "vue";
++import { useClusterStore } from "~/stores/clusterStore";
+ 
+ export declare type Data = Record<string, unknown>;
+ 
+@@ -115,10 +116,15 @@ export const provideLeafletWrapper = (methodName) => {
+   const wrapped = ref((..._args: any[]) =>
+     console.warn(`Method ${methodName} has been invoked without being replaced`)
+   );
++
+   const wrapper = (...args: any[]) => wrapped.value(...args);
+   wrapper.wrapped = wrapped;
+   provide(methodName, wrapper);
+ 
++  const clusterStrore = useClusterStore();
++  clusterStrore.setNames(methodName)
++  clusterStrore.setFunctions(wrapper)
++
+   return wrapper;
+ };
+ 

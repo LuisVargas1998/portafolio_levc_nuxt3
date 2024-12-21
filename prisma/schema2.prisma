@@ -1,0 +1,69 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+// BASE DE DATOS proyecto-vias
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL2")
+}
+
+// IMPORTANTE PARA ACTUALIZAR SCHEMA ----> 
+//     npx prisma db push --schema=./prisma/schema2.prisma
+//     npx prisma db pull --schema=./prisma/schema2.prisma 
+
+
+//-------------- colección: gps_routes --------------
+
+model registro_videos {
+  id_registro               String   @id @default(auto()) @map("_id") @db.ObjectId
+  ruta                      String
+  fecha_grabacion           DateTime
+  id_almacenamiento_video   String?
+  id_almacenamiento_archivo String?
+  procesado                 Boolean
+}
+
+// //-------------- COLECCIÓN  geojsons --------------
+
+// model geojsons {
+//   id              String            @id @default(auto()) @map("_id") @db.ObjectId
+//   type            String
+//   features        Features[]
+// }
+
+// type Features {
+//   type            String
+//   geometry        Geometry
+//   properties      Properties
+// }
+
+// type Geometry {
+//   type            String
+//   coordinates     Json[]
+// }
+
+// type Properties{
+//   name            String
+//   desc            String?
+//   number          Int?
+// }
+
+
+
+// //-------------- COLECCIÓN  metadata --------------
+
+// model metadata {
+//   id               String            @id @default(auto()) @map("_id") @db.ObjectId
+//   frame_video      Int[]
+//   coordinates      Json[]
+//   detections       Json
+// }
+
+// //-------------- COLECCIÓN  ides --------------
+
+// model ides {
+//   id               String            @id @default(auto()) @map("_id") @db.ObjectId
+//   id_geojson       String
+//   id_metadata      String
+// }
