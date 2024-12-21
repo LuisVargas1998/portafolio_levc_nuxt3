@@ -11,15 +11,14 @@ const checkbox2 = ref(false);
 const show2 = ref(false);
 const show3 = ref(true);
 
-
 const credentials = reactive({
   email: "",
   password: "",
 });
 
-//para que no se bloquee el formulario del login al hacer logout, 
+//para que no se bloquee el formulario del login al hacer logout,
 //recargar la pagina auto
-if (userStore.isLogOut){
+if (userStore.isLogOut) {
   window.location.reload();
 }
 
@@ -38,19 +37,19 @@ const loginGoogle = async () => {
       idptoken: token,
       federated: 1,
     };
-            userStore.imagenurl = data.photos[0].url;
+    userStore.imagenurl = data.photos[0].url;
     try {
       const response: any = await authMysql(datPost);
       if (response.authenticated) {
         //window.location.href = "/home";
-        localStorage.setItem('auth', true.toString());
+        localStorage.setItem("auth", true.toString());
         userStore.auth = true;
-        localStorage.setItem('imgurl', data.photos[0].url);
+        localStorage.setItem("imgurl", data.photos[0].url);
         userStore.imagenurl = data.photos[0].url;
-        localStorage.setItem('name', data.names[0].displayName);
+        localStorage.setItem("name", data.names[0].displayName);
         userStore.name = data.names[0].displayName;
         if (response.roles[0] == "admin" || response.roles[0] == "admin") {
-          localStorage.setItem('role', 'admin');
+          localStorage.setItem("role", "admin");
           userStore.role = "admin";
         }
         await navigateTo("/home");
@@ -72,12 +71,12 @@ async function makePostRequest() {
     const response: any = await authMysql(dat);
     if (response.authenticated) {
       //window.location.href = "/home";
-      localStorage.setItem('auth', true.toString());
+      localStorage.setItem("auth", true.toString());
       userStore.auth = true;
-      localStorage.setItem('name', response.uname);
+      localStorage.setItem("name", response.uname);
       userStore.name = response.uname;
       if (response.roles[0] == "admin" || response.roles[0] == "admin") {
-        localStorage.setItem('role', 'admin');
+        localStorage.setItem("role", "admin");
         userStore.role = "admin";
       }
       await navigateTo("/home");
@@ -112,17 +111,17 @@ const logInWithFacebook = () => {
                 const response: any = await authMysql(datPost);
                 if (response.authenticated) {
                   //window.location.href = "/home";
-                  localStorage.setItem('auth', true.toString());
+                  localStorage.setItem("auth", true.toString());
                   userStore.auth = true;
-                  localStorage.setItem('imgurl', dataf.picture.data.url);
+                  localStorage.setItem("imgurl", dataf.picture.data.url);
                   userStore.imagenurl = dataf.picture.data.url;
-                  localStorage.setItem('name', dataf.name);
+                  localStorage.setItem("name", dataf.name);
                   userStore.name = dataf.name;
                   if (
                     response.roles[0] == "admin" ||
                     response.roles[0] == "admin"
                   ) {
-                    localStorage.setItem('role', 'admin');
+                    localStorage.setItem("role", "admin");
                     userStore.role = "admin";
                   }
                   await navigateTo("/home");
@@ -176,18 +175,18 @@ const loadFacebookSDK = async (d: any, s: any, id: any) => {
 <template>
   <div>
     <div class="hidden-sm-and-down">
-    <div class="mini-spacer"></div>
+      <div class="mini-spacer"></div>
     </div>
     <v-container>
       <v-row justify="center" no-gutters>
         <v-col v-col cols="10" sm="10" md="8" lg="8">
           <v-card class="card-shadow">
-            <v-img src="/images/background/u1.jpg" ></v-img>
+            <v-img src="/images/background/u1.jpg"></v-img>
           </v-card>
         </v-col>
         <v-col cols="10" sm="15" md="8" lg="4">
           <v-card class="card-shadow" key="formKey">
-            <v-card-text class="card-margin" key="formKey" style="margin: 14px;">
+            <v-card-text class="card-margin" key="formKey" style="margin: 14px">
               <div class="text-center">
                 <h2 class="ui-title font-weight-bold">Bienvenido</h2>
                 <div style="height: 10px"></div>
@@ -286,13 +285,13 @@ const loadFacebookSDK = async (d: any, s: any, id: any) => {
               <v-row>
                 <v-col>
                   <v-btn @click="loginGoogle" block>
-                    <img class="img-size mr-2" src="images/google.svg" />
+                    <img class="img-size mr-2" src="/images/google.svg" />
                     Google
                   </v-btn>
                 </v-col>
                 <v-col>
                   <v-btn @click="logInWithFacebook" block>
-                    <img class="img-size2 mr-2" src="images/facebook.svg" />
+                    <img class="img-size2 mr-2" src="/images/facebook.svg" />
                     Facebook
                   </v-btn>
                 </v-col>
