@@ -158,7 +158,7 @@ const loadFacebookSDK = async (d: any, s: any, id: any) => {
 <template>
   <div>
     <div class="hidden-sm-and-down">
-    <div class="mini-spacer"></div>
+      <div class="mini-spacer"></div>
     </div>
     <div>
       <v-container>
@@ -260,13 +260,13 @@ const loadFacebookSDK = async (d: any, s: any, id: any) => {
                 <v-row>
                   <v-col>
                     <v-btn @click="loginGoogle" block>
-                      <img class="img-size mr-2" src="images/google.svg" />
+                      <img class="img-size mr-2" src="/images/google.svg" />
                       Google
                     </v-btn>
                   </v-col>
                   <v-col>
                     <v-btn @click="logInWithFacebook" block>
-                      <img class="img-size2 mr-2" src="images/facebook.svg" />
+                      <img class="img-size2 mr-2" src="/images/facebook.svg" />
                       Facebook
                     </v-btn>
                   </v-col>
