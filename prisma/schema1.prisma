@@ -2,7 +2,7 @@ generator client {
   provider = "prisma-client-js"
 }
 
-// BASE DE DATOS proyecto-vias
+// BASE DE DATOS proyecto-vias-4gy5g
 datasource db {
   provider = "mongodb"
   url      = env("DATABASE_URL1")
@@ -30,6 +30,24 @@ model variables_de_procesamiento {
   id                String            @id @default(auto()) @map("_id") @db.ObjectId
   WEB               String
   ruta_mapa         String
+}
+
+//-------------- colección: credenciales_GDrive --------------
+
+model credenciales_GDrive {
+  id                              String            @id @default(auto()) @map("_id") @db.ObjectId
+  correo_princ                    String
+  type                            String
+  project_id                      String
+  private_key_id                  String
+  private_key                     Json
+  client_email                    String
+  client_id                       String
+  auth_uri                        String
+  token_uri                       String
+  auth_provider_x509_cert_url     String
+  client_x509_cert_url            String
+  universe_domain                 String
 }
 
 // //-------------- COLECCIÓN  geojsons --------------

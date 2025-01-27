@@ -2,6 +2,12 @@ import { google } from "googleapis"; //Intalación de googleapis
 import { readMultipartFormData } from "h3";
 import apikeys from "./credential-vargasluis.igg@gmail.com.json"; //cambiar de credencial cuando sea necesario
 import { PassThrough } from "stream";
+import { PrismaClient } from "@prisma/client";
+import { config } from "dotenv";
+
+config(); // Cargar variables de entorno
+
+const prisma = new PrismaClient();
 
 export default defineEventHandler(async (event) => {
   // Constante con los permisos necesarios para acceder a Google Drive
@@ -11,13 +17,29 @@ export default defineEventHandler(async (event) => {
   const carpetaDriveID = "1B-gPwm73w89TLogeLfkC3OvGZBvpeG3E"; // ID de la carpeta de destino del Drive
   const email = "levc.proyectovias4gy5g@gmail.com"; // Correo electrónico para compartir el archivo
 
-  // Función para autenticar el cliente
-  const authorize = async () => {
+  // //Función para autenticar el cliente con archivo JSON de credenciales GDrive
+  // const authorize = async () => {
+  //   console.log("client email :", apikeys.client_email);
+  //   console.log("private key :", apikeys.private_key);
+  //   const jwtClient = new google.auth.JWT(
+  //     // Credenciales de la cuenta de servicio
+  //     apikeys.client_email,
+  //     null,
+  //     apikeys.private_key,
+  //     SCOPE
+  //   );
+  //   await jwtClient.authorize();
+  //   return jwtClient;
+  // };
+
+  // Función para autenticar el cliente con data importada de MongoDB
+  const authorize = async (credentials) => {
+    const privateKey = credentials.private_key.replace(/\\n/g, "\n"); // Reemplazar \\n con saltos de línea reales si es necesario
+
     const jwtClient = new google.auth.JWT(
-      // Credenciales de la cuenta de servicio
-      apikeys.client_email,
+      credentials.client_email,
       null,
-      apikeys.private_key,
+      privateKey,
       SCOPE
     );
     await jwtClient.authorize();
@@ -104,10 +126,24 @@ export default defineEventHandler(async (event) => {
     });
   };
 
-  // EJECUCIÓN de la lógica principal
+  // EJECUCIÓN DE LA LÓGICA PRINCIPAL
   try {
-    // Autenticación del cliente de Google Drive
-    const authClient = await authorize();
+    // Realiza un GET a Mongo (a traves de Prisma) y obtiene la data de credenciales de GDrive
+    const cred_GDrive = await prisma.credenciales_GDrive.findUnique({
+      where: {
+        id: "67971600d235c1b4c2c12f4d",
+        // Se está realizando con las credenciales de vargasluis.igg1@gmail.com
+      },
+    });
+
+    if (!cred_GDrive) {
+      return { status: 400, message: "Nombre de la colección no encontrado" };
+    }
+
+    // // Autenticación del cliente de Google Drive con archivo JSON de credenciales
+    // const authClient = await authorize();
+    // Autenticación del cliente de Google Drive con credenciales importadas de MongoDB
+    const authClient = await authorize(cred_GDrive);
 
     // Lectura de los archivos subidos desde el evento
     const files = await readMultipartFormData(event);

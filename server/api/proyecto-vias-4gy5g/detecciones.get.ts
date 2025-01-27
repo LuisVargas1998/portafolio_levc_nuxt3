@@ -11,7 +11,8 @@ const prisma = new PrismaClient();
 
 export default defineEventHandler(async (event) => {
   try {
-    // Conectar a Prisma y obtener el nombre de la colección
+    // Realiza un GET a Mongo (a traves de Prisma) y obtiener el nombre de la  colección
+    // colección que contiene la data de la ruta con las detecciones que se van a mostrar en el mapa
     const dataWeb = await prisma.variables_de_procesamiento.findUnique({
       where: {
         id: "67664052d7c302ba37ad619c",
@@ -24,7 +25,7 @@ export default defineEventHandler(async (event) => {
 
     const nombreColeccion = dataWeb.ruta_mapa;
 
-    // Conectar a MongoDB y obtener los documentos de la colección
+    //Realiza un GET a MongoDB y obtener la data de la colección que contiene las detecciones
     await client.connect();
     const database = client.db("data_detections");
     const collection = database.collection(nombreColeccion);
